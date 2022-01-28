@@ -14,8 +14,7 @@ class Queue:
             print(queue)
 
     def dequeue(self):
-        queue.popleft()
-        print(queue)
+        print(queue.popleft())
 
     def peek(self):
         if len(queue) == 0:
