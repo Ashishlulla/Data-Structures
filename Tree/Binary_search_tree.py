@@ -38,3 +38,26 @@ class BST:
                 print("Node is Not present")
             else:
                 self.rchild.search(data)
+     # Step 4:
+    def pre_order(self):
+        print(self.key, end=" ")
+        if self.lchild is not None:
+            self.lchild.pre_order()
+        if self.rchild is not None:
+            self.rchild.pre_order()
+    
+    # Step 5:
+    def in_order(self):
+        if self.lchild is not None:
+            self.lchild.in_order()
+        print(self.key, end=" ")
+        if self.rchild is not None:
+            self.rchild.in_order()
+
+    # Step 6:
+    def post_order(self):
+        if self.lchild is not None:
+            self.lchild.post_order()
+        if self.rchild is not None:
+            self.rchild.post_order()
+        print(self.key, end=" ")
