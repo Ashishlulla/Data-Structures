@@ -61,3 +61,53 @@ class BST:
         if self.rchild is not None:
             self.rchild.post_order()
         print(self.key, end=" ")
+    
+    # Step 7
+    def delete(self,data):
+        if self.key is None:
+            print("BST is empty")
+            return
+        if data < self.key:
+            if self.lchild is not None:
+                self.lchild = self.lchild.delete(data)
+            else:
+                print("Node is Not present in a tree")
+        elif data > self.key:
+            if self.rchild is not None:
+                self.rchild = self.rchild.delete(data)
+            else:
+                print("Node is Not present in a tree")
+        else:
+            if self.lchild is None:
+                temp = self.rchild
+                self = None
+                return temp
+            if self.rchild is None:
+                temp = self.rchild
+                self = None
+                return temp
+            node = self.rchild
+            while node.lchild is not None:
+                node = node.lchild
+            self.key = node.key
+            self.rchild = self.rchild.delete(node.key)
+        return self
+            
+
+root = BST(10)
+lst = [6,3,1,6,98,3,7]
+for i in lst:
+    root.insertion(i)
+
+root.search(100)
+print("\nPre-order", end="\n")
+root.pre_order()
+print("\nIn-order", end="\n")
+root.in_order()
+print("\nPost-order", end="\n")
+root.post_order()
+
+print("\n After Delete")
+root.delete(6)
+print("\nIn-order", end="\n")
+root.in_order()
