@@ -63,27 +63,39 @@ class BST:
         print(self.key, end=" ")
     
     # Step 7
-    def delete(self,data):
+    def delete(self,data, curr):
         if self.key is None:
             print("BST is empty")
             return
         if data < self.key:
             if self.lchild is not None:
-                self.lchild = self.lchild.delete(data)
+                self.lchild = self.lchild.delete(data, curr)
             else:
                 print("Node is Not present in a tree")
         elif data > self.key:
             if self.rchild is not None:
-                self.rchild = self.rchild.delete(data)
+                self.rchild = self.rchild.delete(data, curr)
             else:
                 print("Node is Not present in a tree")
         else:
             if self.lchild is None:
                 temp = self.rchild
+                if data == curr:
+                    self.key = self.rchild.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return 
                 self = None
                 return temp
             if self.rchild is None:
                 temp = self.rchild
+                if data == curr:
+                    self.key = temp.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return 
                 self = None
                 return temp
             node = self.rchild
