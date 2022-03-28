@@ -106,14 +106,92 @@ class LinkedList:
                 print("Node not present in a linked list")
             else:
                 n.ref = n.ref.ref
+    # Step 12:
+    def length(self):
+        count = 0
+        if self.head is None:
+            print("\n",0)
+            return
+        if self.head.ref is None:
+            print("\n",1)
+        else:
+            n = self.head
+            while n is not None:
+                n= n.ref
+                count += 1
+            print("\n",count)
+    
+    #  Step 13
+    def max_node(self):
+        if self.head is None:
+            print("LL is Empty")
+        else:
+            n = self.head.ref
+            maxi = self.head.data
+            while n is not None:
+                if maxi < n.data:
+                    maxi = n.data
+                n = n.ref
+            print(maxi)
+    
+    #  Step 14
+    def min_node(self):
+        if self.head is None:
+            print("LL is Empty")
+        else:
+            n = self.head.ref
+            mini = self.head.data
+            while n is not None:
+                if mini > n.data:
+                    mini = n.data
+                n = n.ref
+            print(mini)
+    
+    # Step 15
+    def nodes_sum(self):
+        if self.head is None:
+            print("LL is Empty so sum is Zero")
+        else:
+            n = self.head
+            addn = 0
+            while n is not None:
+                addn += n.data
+                n = n.ref
+            print(addn)
+    
+    # Step 16
+    def nodes_prod(self):
+        if self.head is None:
+            print("LL is Empty so product is Zero")
+        else:
+            n = self.head
+            prodn = 1
+            while n is not None:
+                prodn *= n.data
+                n = n.ref
+            print(prodn)
 
 
-ll1 = LinkedList()
-ll1.insert_at_begining(10)
-ll1.insert_at_end(20)
-# ll1.insert_after(30, 10)
-# ll1.insert_before(40, 20)
-# ll1.delete_at_begining()
-# ll1.delete_at_end()
-# ll1.delete_node(30)
-ll1.tranverse()
+
+sll = SinglyLinkedList()
+sll.insert_begin(30)
+sll.insert_begin(20)
+sll.insert_begin(10)
+sll.insert_end(40)
+sll.insert_end(50)
+sll.insert_end(60)
+sll.add_after(70, 60)
+sll.add_after(5, 10)
+sll.add_before(2, 5)
+sll.add_before(1, 2)
+sll.traverse()
+sll.delete_begin()
+sll.delete_end()
+sll.delete_by_value(60)
+print("\n")
+sll.traverse()
+sll.length()
+sll.max_node()
+sll.min_node()
+sll.nodes_sum()
+sll.nodes_prod()
